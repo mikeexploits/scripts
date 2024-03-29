@@ -12548,16 +12548,6 @@ function useCommand.iq()
 	end
 end
 
-function useCommand.credits()
-	opx("-","Opened credits")
-	opxL("Credits","Note: Some discords may be out of date due to consistent changing;\
-	Owner - "..DevCords[1].." & pigeon"\
-	Dev - "..DevCords[2].."\
-	Thank you to IY for some functions inside CMD-X\
-	Thank you to Bannable for animpack\
-	Thank you to 6033 for old-aimbot")
-end
-
 function useCommand.outputlarger()
 	if arguments[2] then
 		opxString = getstring(2)
