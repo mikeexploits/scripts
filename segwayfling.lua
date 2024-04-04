@@ -2,7 +2,7 @@
 local plrs=game.Players
 local lp = plrs.LocalPlayer
 local M=lp:GetMouse()
-local T=lpr.Character
+local T=lp.Character
 local bhs = lp.Backpack.HandlessSegway
 local rs=game:GetService("RunService")
 local tw = task.wait
