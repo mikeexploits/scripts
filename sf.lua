@@ -1,3 +1,8 @@
+--[[
+segway fling script
+hold the segway when executing!
+]]
+
 --functions
 local function sendnotif(title, text, dur)
 	game.StarterGui:SetCore("SendNotification", {
@@ -12,8 +17,8 @@ local plrs=game.Players
 local lp = plrs.LocalPlayer
 local M=lp:GetMouse()
 local T=lp.Character
-local bhs = lp.Backpack.HandlessSegway
 local rs=game:GetService("RunService")
+local bp = lp.Backpack
 local tw = task.wait
 local cnew = CFrame.new
 local angles = CFrame.Angles
@@ -26,8 +31,12 @@ local c3 = Color3
 local rgb = c3.fromRGB
 
 sendnotif("segway fling", "loading...", 5)
-if T.Humanoid.RigType == "R15" then  sendnotif("segway fling", "WARNING! it might not work in r15, switch to r6 if it doesnt work.") end
-if bhs then bhs.Parent = T end
+if T.Humanoid.RigType == "R15" then  
+    sendnotif("segway fling", "WARNING! it might not work in r15, switch to r6 if it doesnt work.") 
+end
+if bp:FindFirstChild("HandlessSegway") then 
+     bp:FindFirstChild("HandlessSegway").Parent = T 
+end
 tw()
 T.HandlessSegway.RemoteEvents.SpawnSegway:FireServer(BrickColor.new("Black"))
 T.HandlessSegway.RemoteEvents.ConfigTool:FireServer(1, false)
