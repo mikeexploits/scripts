@@ -1,9 +1,9 @@
 --variables
 local plrs=game.Players
 local lp = plrs.LocalPlayer
+local lpb = lp.Backpack
 local M=lp:GetMouse()
 local T=lp.Character
-local bhs = lp.Backpack.HandlessSegway
 local rs=game:GetService("RunService")
 local tw = task.wait
 local cnew = CFrame.new
@@ -25,8 +25,8 @@ end
 sendnotif("segway fling", "loading...", 5)
 
 --variables again
-if bhs then
-    bhs.Parent = T
+if lpb.HandlessSegway then
+    lpb.HandlessSegway.Parent = T
 end
 tw()
 T.HandlessSegway.RemoteEvents.SpawnSegway:FireServer(BrickColor.new("Black"))
