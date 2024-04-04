@@ -1,18 +1,3 @@
---variables
-local plrs=game.Players
-local lp = plrs.LocalPlayer
-local lpb = lp.Backpack
-local M=lp:GetMouse()
-local T=lp.Character
-local rs=game:GetService("RunService")
-local tw = task.wait
-local cnew = CFrame.new
-local angles = CFrame.Angles
-local sin = math.sin
-local rad = math.rad
-local hb=rs.Heartbeat
-local v3=Vector3.new
-
 --functions
 local function sendnotif(title, text, dur)
 	game.StarterGui:SetCore("SendNotification", {
@@ -22,12 +7,27 @@ local function sendnotif(title, text, dur)
 	})
 end
 
-sendnotif("segway fling", "loading...", 5)
+--variables
+local plrs=game.Players
+local lp = plrs.LocalPlayer
+local M=lp:GetMouse()
+local T=lp.Character
+local bhs = lp.Backpack.HandlessSegway
+local rs=game:GetService("RunService")
+local tw = task.wait
+local cnew = CFrame.new
+local angles = CFrame.Angles
+local sin = math.sin
+local rad = math.rad
+local hb=rs.Heartbeat
+local v3=Vector3.new
+local r = math.random
+local c3 = Color3
+local rgb = c3.fromRGB
 
---variables again
-if lpb.HandlessSegway then
-    lpb.HandlessSegway.Parent = T
-end
+sendnotif("segway fling", "loading...", 5)
+if T.Humanoid.RigType == "R15" then  sendnotif("segway fling", "WARNING! it might not work in r15, switch to r6 if it doesnt work.") end
+if bhs then bhs.Parent = T end
 tw()
 T.HandlessSegway.RemoteEvents.SpawnSegway:FireServer(BrickColor.new("Black"))
 T.HandlessSegway.RemoteEvents.ConfigTool:FireServer(1, false)
@@ -44,12 +44,17 @@ for e,t in pairs(S:GetChildren()) do
 	end
 end
 T.HandlessSegway:Destroy()
-P.Transparency = 0.69
-P.CanTouch = false
-local i = Instance.new("Highlight")
-i.Parent = P
-i.FillTransparency = 1
-i.OutlineColor = Color3.fromRGB(0, 126, 255)
+P.Transparency=1
+P.CanTouch=false
+P.Size=v3(1.6,1.6,1.6)
+local i=Instance.new("SelectionBox")
+i.Parent=P
+i.Adornee = P
+i.Color3 = rgb(19, 156, 255)
+i.LineThickness = 0.069
+i.SurfaceColor3 = rgb(14, 119, 194)
+i.SurfaceTransparency = 0.42
+
 
 --clicking functions
 M.Button1Down:Connect(function()
@@ -65,13 +70,13 @@ hb:Connect(function()
     if MD == true then
         P.Velocity=v3(0, 69, 0)
         P.CFrame=M.Hit +  v3(0.0015*sin(os.clock()*15), 0.0015*sin(os.clock()*15+1.047), 0.0015*sin(os.clock()*15+2.094))
-        P.RotVelocity=v3(17420,18420,17420)
+        P.RotVelocity=v3(r(18000,20000),r(19000,21000),r(18000,20000))
         P.CanCollide=false
     else
         P.CanCollide=false
         P.RotVelocity =  v3(sin(os.clock()*15), sin(os.clock()*15+1.047), sin(os.clock()*15+2.094))
         P.Velocity=v3(0, 25.1, 0) + T.Torso.Velocity * Vector3.new(10,0,10)
-        P.CFrame=T.Torso.CFrame*cnew(-420,0,0) * angles(rad(90), rad(90), rad(0)) + Vector3.new(0.0015*sin(os.clock()*15), 0.0015*sin(os.clock()*15+1.047), 0.0015*sin(os.clock()*15+2.094))
+        P.CFrame=T.Torso.CFrame*cnew(r(500,1000),0,r(500,1000)) * angles(rad(90), rad(90), rad(0)) + Vector3.new(0.0015*sin(os.clock()*15), 0.0015*sin(os.clock()*15+1.047), 0.0015*sin(os.clock()*15+2.094))
     end
 end)
 
