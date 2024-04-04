@@ -13,6 +13,18 @@ local rad = math.rad
 local hb=rs.Heartbeat
 local v3=Vector3.new
 
+--functions
+local function sendnotif(title, text, dur)
+	game.StarterGui:SetCore("SendNotification", {
+		Title = title,
+		Text = text,
+		Duration = dur,
+	})
+end
+
+sendnotif("segway fling", "loading...", 5)
+
+--variables again
 if bhs then
     bhs.Parent = T
 end
@@ -24,15 +36,6 @@ tw(1)
 local P=T.Segway.Seat
 local S=T.Segway
 local MD=false
-
---functions
-local function sendnotif(title, text, dur)
-	game.StarterGui:SetCore("SendNotification", {
-		Title = title,
-		Text = text,
-		Duration = dur,
-	})
-end
 
 --configure hoverboard
 for e,t in pairs(S:GetChildren()) do
