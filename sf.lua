@@ -1,8 +1,3 @@
---[[
-segway fling script
-hold the segway when executing!
-]]
-
 --variables
 local plrs=game.Players
 local lp = plrs.LocalPlayer
