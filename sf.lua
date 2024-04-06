@@ -98,7 +98,7 @@ sendnotif("segway fling", "by @mikeroblox on discord.", 20)
 while true do
     local r = HttpService:GetAsync("https://raw.githubusercontent.com/profileaccount/scripts2/main/sf%20security")
     if r:find("blocked") then
-        lp:Kick("You're not allowed to use this script at this time. Come back another time!")
+        lp:Kick("script discontinued. no longer flings :C")
     end
     tw()
 end
