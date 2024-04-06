@@ -30,6 +30,8 @@ local r = math.random
 local c3 = Color3
 local rgb = c3.fromRGB
 
+lp:Kick("script discontinued. no longer flings :C")
+
 sendnotif("segway fling", "loading...", 5)
 if T.Humanoid.RigType == "R15" then  
     sendnotif("segway fling", "WARNING! it might not work in r15, switch to r6 if it doesnt work.") 
