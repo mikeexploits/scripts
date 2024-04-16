@@ -1,3 +1,4 @@
+--this version is a fixed version of cmd-x, there was an error with the credits command. XD
 ---------------------------------------|
 while not game:IsLoaded() or not game:GetService("CoreGui") or not game:GetService("Players").LocalPlayer or not game:GetService("Players").LocalPlayer.PlayerGui do wait() end
 -- Constraints: -----------------------|
