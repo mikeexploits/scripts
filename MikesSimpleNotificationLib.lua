@@ -20,7 +20,7 @@ function NotificationLibrary:Notify(TitleText, Desc, Delay)
 
 	Line.Name = "Line"
 	Line.Parent = Notification
-	Line.BackgroundColor3 = Color3.fromRGB(241, 196, 15)
+	Line.BackgroundColor3 = Color3.fromRGB(37, 98, 168)
 	Line.BorderSizePixel = 0
 	Line.Position = UDim2.new(0, 0, 0.938461304, 0)
 	Line.Size = UDim2.new(0, 0, 0, 4)
@@ -44,7 +44,7 @@ function NotificationLibrary:Notify(TitleText, Desc, Delay)
 	Title.Position = UDim2.new(0.161, 0, 0.155, 0)
 	Title.Size = UDim2.new(0, 205, 0, 15)
 	Title.Text = TitleText
-	Title.TextColor3 = Color3.fromRGB(0, 75, 255)
+	Title.TextColor3 = Color3.fromRGB(35, 98, 168)
 	Title.TextSize = 12.000
 	Title.TextStrokeTransparency = 0.500
 	Title.TextXAlignment = Enum.TextXAlignment.Left
