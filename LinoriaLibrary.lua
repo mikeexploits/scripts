@@ -3,16 +3,16 @@ THIS WASN'T MADE BY ME!!!
 I made this to preserve the library incase the original author deletes it, so I can keep using it!
 Visit the original resporitory: https://github.com/violin-suzutsuki/LinoriaLib
 ]]
-local InputService = game:GetService('UserInputService');
-local TextService = game:GetService('TextService');
-local CoreGui = game:GetService('CoreGui');
-local Teams = game:GetService('Teams');
-local Players = game:GetService('Players');
-local RunService = game:GetService('RunService')
-local TweenService = game:GetService('TweenService');
-local RenderStepped = RunService.RenderStepped;
-local LocalPlayer = Players.LocalPlayer;
-local Mouse = LocalPlayer:GetMouse();
+local InputService = cloneref(game:GetService('UserInputService'))
+local TextService = cloneref(game:GetService('TextService'))
+local CoreGui = gethui()
+local Teams = cloneref(game:GetService('Teams'))
+local Players = cloneref(game:GetService('Players'))
+local RunService = cloneref(game:GetService('RunService'))
+local TweenService = cloneref(game:GetService('TweenService'))
+local RenderStepped = cloneref(RunService.RenderStepped)
+local LocalPlayer = cloneref(Players.LocalPlayer)
+local Mouse = cloneref(LocalPlayer:GetMouse())
 
 local ProtectGui = protectgui or (syn and syn.protect_gui) or (function() end);
 
