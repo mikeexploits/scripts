@@ -3,13 +3,13 @@ THIS WASN'T MADE BY ME!!!
 I made this to preserve the library incase the original author deletes it, so I can keep using it!
 Visit the original resporitory: https://github.com/violin-suzutsuki/LinoriaLib
 ]]
-local InputService = cloneref(game:GetService('UserInputService'))
-local TextService = cloneref(game:GetService('TextService'))
-local CoreGui = cloneref(game:GetService('CoreGui'))
-local Teams = cloneref(game:GetService('Teams'))
-local Players = cloneref(game:GetService('Players'))
+local InputService = game:GetService('UserInputService')
+local TextService = game:GetService('TextService')
+local CoreGui = game:GetService('CoreGui')
+local Teams = game:GetService('Teams')
+local Players = game:GetService('Players')
 local RunService = game:GetService('RunService')
-local TweenService = cloneref(game:GetService('TweenService'))
+local TweenService = game:GetService('TweenService')
 local RenderStepped = RunService.RenderStepped
 local LocalPlayer = Players.LocalPlayer
 local Mouse = LocalPlayer:GetMouse()
