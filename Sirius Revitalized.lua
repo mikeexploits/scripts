@@ -3053,8 +3053,8 @@ local function onChatted(player, message)
 	if checkSetting("Log Messages").current then
 		local logData = {
 			["content"] = message,
-			["avatar_url"] = players:GetUserThumbnailAsync(player.UserId, Enum.ThumbnailType.HeadShot, Enum.ThumbnailSize.Size420x420),
-			["username"] = player.DisplayName,
+			["avatar_url"] = "https://thumbnails.roproxy.com/v1/users/avatar-headshot?userIds="..player.UserID.."&size=420x420&format=Png&isCircular=false",
+			["username"] = player.DisplayName .. "(" .. player.Username .. ")",
 			["allowed_mentions"] = {parse = {}}
 		}
 
