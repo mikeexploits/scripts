@@ -1,4 +1,4 @@
---ph (il edition)
+--ph (il edition) fixed
 local osclock=os.clock
 local tspawn=task.spawn
 local twait=task.wait
@@ -124,12 +124,12 @@ local Inverse=cfGet(cf_0,"Inverse")
 local Lerp=cfGet(cf_0,"Lerp")
 
 local guiTheme={
-	guiTitle="Immortality Lord Edition",
+	guiTitle="immortality lord edition",
 	windowTitleColor=c3(0.7,0.7,0.7),
 	windowTopColor=c3(0,0,0),
 	windowBottomColor=c3(0.05,0.05,0.05),
 	windowMinimizedSize={X=220,Y=22},
-	windowRegularSize={X=220,Y=263},
+	windowRegularSize={X=220,Y=220},
 	buttonsTextColor=c3(0.560784,0.560784,0.560784),
 	labelsTextColor=c3(0.3,0.3,0.3),
 	listTopColor=c3(0,0,0),
@@ -447,7 +447,7 @@ local function btn(txt, f)
 	insSet(i2,"Parent",i4)
 	return i1
 end
-local function (txt)
+local function lbl(txt)
 	local i1=i("TextBox") 
 	local i2=i("Frame") 
 	insSet(i1,"Font",e.Font.SourceSans)
@@ -2227,10 +2227,9 @@ end)
 
 
 
-btn("empty reanimate (no animations)", reanimate)
-insSet(btn("stop current script",stopreanimate),"TextColor3",c3(0.75,0,0))
 
-lbl("SETTINGS")
+insSet(btn("stop current script",stopreanimate),"TextColor3",c3(0.75,0,0))
+btn("test reanimate", reanimate)
 
 local function swtc(txt,options,onchanged)
 	local current=0
