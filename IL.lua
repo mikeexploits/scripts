@@ -926,7 +926,7 @@ local function reanimate()
 						twait(0.2501)
 					end
 					if respawntp then
-						local startpos=pos+v3(mrandom(-32,32),0,mrandom(-32,32))
+						local startpos=pos+v3(mrandom(-5,5),-100,mrandom(-5,5))
 						local dir=nil
 						local poscheck=true
 						while poscheck do
