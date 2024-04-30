@@ -124,7 +124,7 @@ local Inverse=cfGet(cf_0,"Inverse")
 local Lerp=cfGet(cf_0,"Lerp")
 
 local guiTheme={
-	guiTitle="patchma hub IL edition",
+	guiTitle="Immortality Lord Edition",
 	windowTitleColor=c3(0.7,0.7,0.7),
 	windowTopColor=c3(0,0,0),
 	windowBottomColor=c3(0.05,0.05,0.05),
@@ -447,7 +447,7 @@ local function btn(txt, f)
 	insSet(i2,"Parent",i4)
 	return i1
 end
-local function lbl(txt)
+local function (txt)
 	local i1=i("TextBox") 
 	local i2=i("Frame") 
 	insSet(i1,"Font",e.Font.SourceSans)
@@ -468,8 +468,6 @@ end
 
 Draggable(i1)
 
-lbl("by MyWorld")
-lbl("discord.gg/QMy5f6DrbH")
 lbl("original IL by LuaQuack")
 
 local allowshiftlock=nil
@@ -2232,7 +2230,7 @@ end)
 btn("empty reanimate (no animations)", reanimate)
 insSet(btn("stop current script",stopreanimate),"TextColor3",c3(0.75,0,0))
 
-lbl("SETTINGS (REANIMATE TO APPLY)")
+lbl("SETTINGS")
 
 local function swtc(txt,options,onchanged)
 	local current=0
@@ -2292,7 +2290,6 @@ swtc("changestate when fling",{
 },function(v)
 	flingchangestate=v
 end)
-lbl("(limb collision)")
 
 swtc("respawn tp",{
 	{value=true,text="random tp close"},
