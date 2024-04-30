@@ -1,13 +1,4 @@
---[[
-	patchma hub by MyWorld
-	Immortality Lord edition
-
-	required accessories:
-	17270164442,17270178857,17270001635,17269952801,17269983359,17269998373,17270231731,17270225913,17326812233,17326800544
-
-	based on patchma hub version 37
-]]
-
+--ph (il edition)
 local osclock=os.clock
 local tspawn=task.spawn
 local twait=task.wait
