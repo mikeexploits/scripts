@@ -1,4 +1,8 @@
---ph (il edition) fixed
+--[[
+	immortality lord for mike's shit
+	by MyWorld
+]]
+
 local osclock=os.clock
 local tspawn=task.spawn
 local twait=task.wait
@@ -124,12 +128,12 @@ local Inverse=cfGet(cf_0,"Inverse")
 local Lerp=cfGet(cf_0,"Lerp")
 
 local guiTheme={
-	guiTitle="immortality lord edition",
+	guiTitle="Immortality Lord",
 	windowTitleColor=c3(0.7,0.7,0.7),
 	windowTopColor=c3(0,0,0),
 	windowBottomColor=c3(0.05,0.05,0.05),
 	windowMinimizedSize={X=220,Y=22},
-	windowRegularSize={X=220,Y=220},
+	windowRegularSize={X=220,Y=263},
 	buttonsTextColor=c3(0.560784,0.560784,0.560784),
 	labelsTextColor=c3(0.3,0.3,0.3),
 	listTopColor=c3(0,0,0),
@@ -139,6 +143,7 @@ local guiTheme={
 local accessorylimbs={
 	{meshid="17269636541",textureid="",C0=cf_0,Name="Torso"},
 	{meshid="17269753087",textureid="",C0=angles(0,3.14,0),Name="Head"},
+	{meshid="17375312569",textureid="",C0=cf(1.50995803e-08,-1.07200003,-0.100000001,-1,0,1.50995803e-07,0,1,0,-1.50995803e-07,0,-1),Name="Head"},
 	{meshid="17269487439",textureid="",C0=angles(0,0,1.5707963267948966),Name="Left Arm"},
 	{meshid="17269487439",textureid="",C0=angles(0,0,1.5707963267948966),Name="Right Arm"},
 	{meshid="17269487439",textureid="",C0=angles(0,0,1.5707963267948966),Name="Left Leg"},
@@ -478,6 +483,7 @@ local highlightflingtargets=nil
 local discharscripts=nil
 local flingchangestate=nil
 local respawntp=true
+local breakjointsmethod=nil
 
 local c=nil
 local function stopreanimate() 
@@ -926,7 +932,7 @@ local function reanimate()
 						twait(0.2501)
 					end
 					if respawntp then
-						local startpos=pos+v3(mrandom(-5,5),-100,mrandom(-5,5))
+						local startpos=pos+v3(mrandom(-32,32),0,mrandom(-32,32))
 						local dir=nil
 						local poscheck=true
 						while poscheck do
@@ -956,7 +962,22 @@ local function reanimate()
 						return
 					end
 					primarypart=insGet(newc,"PrimaryPart") or hrp
-					insGet(newc,"BreakJoints")(newc)
+					if breakjointsmethod==1 then
+						insGet(newc,"BreakJoints")(newc)
+						local h=FindFirstChildOfClass(newc,"Humanoid")
+						if h then
+							insSet(h,"Health",0)
+						end
+					elseif breakjointsmethod==2 then
+						local h=FindFirstChildOfClass(newc,"Humanoid")
+						if h then
+							insSet(h,"Health",0)
+						else
+							insGet(newc,"BreakJoints")(newc)
+						end
+					else
+						insGet(newc,"BreakJoints")(newc)
+					end
 					Connect(insGet(newc,"DescendantAdded"),ondes)
 					for i,v in next,GetDescendants(newc) do
 						ondes(v)
@@ -972,8 +993,9 @@ local function reanimate()
 		charcons[v]=Connect(GetPropertyChangedSignal(v,"Character"),oncharacter)
 		oncharacter()
 	end
-	for i,v in next,GetPlayers(plrs) do onplayer(v) end
+	for i,v in next,GetPlayers(plrs) do if v~=lp then tspawn(onplayer,v) end end
 	Connect(insGet(plrs,"PlayerAdded"),onplayer)
+	onplayer(lp)
 	Connect(insGet(plrs,"PlayerRemoving"),function(v)
 		local charcon=charcons[v]
 		if charcon then
@@ -2225,11 +2247,9 @@ btn("Immortality Lord",function()
 	})
 end)
 
-
-
-
 insSet(btn("stop current script",stopreanimate),"TextColor3",c3(0.75,0,0))
-btn("test reanimate", reanimate)
+
+lbl("SETTINGS (REANIMATE TO APPLY)")
 
 local function swtc(txt,options,onchanged)
 	local current=0
@@ -2319,6 +2339,14 @@ swtc("new character scripts",{
 	{value=false,text="keep"}
 },function(v)
 	discharscripts=v
+end)
+
+swtc("breakjoints",{
+	{value=1,text="breakjoints+health"},
+	{value=2,text="health or breakjoints"},
+	{value=3,text="breakjoints"}
+},function(v)
+	breakjointsmethod=v
 end)
 
 local iscg,_=pcall(insSet,i10,"Parent",FindFirstChildOfClass(game,"CoreGui"))
