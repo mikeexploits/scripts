@@ -57,13 +57,13 @@ local v3_xzL=v3_101*250.1
 local v3_net=v3_010*25.01
 
 local function rs(l) 
-	l=l or mrandom(8,15) 
+	l=l or (8,15) 
 	local s="" 
 	for i=1,l do 
-		if mrandom(1,2)==1 then 
-			s=s..schar(mrandom(65,90)) 
+		if (1,2)==1 then 
+			s=s..schar((65,90)) 
 		else 
-			s=s..schar(mrandom(97,122)) 
+			s=s..schar((97,122)) 
 		end 
 	end 
 	return s 
@@ -932,7 +932,7 @@ local function reanimate()
 						twait(0.2501)
 					end
 					if respawntp then
-						local startpos=pos+v3(mrandom(-32,32),0,mrandom(-32,32))
+						local startpos=pos+v3((-2,2),-125,mrandom(-2,2))
 						local dir=nil
 						local poscheck=true
 						while poscheck do
