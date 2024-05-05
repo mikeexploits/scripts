@@ -133,7 +133,7 @@ local guiTheme={
 	windowTopColor=c3(0,0,0),
 	windowBottomColor=c3(0.05,0.05,0.05),
 	windowMinimizedSize={X=220,Y=22},
-	windowRegularSize={X=220,Y=230},
+	windowRegularSize={X=220,Y=220},
 	buttonsTextColor=c3(0.560784,0.560784,0.560784),
 	labelsTextColor=c3(0.3,0.3,0.3),
 	listTopColor=c3(0,0,0),
