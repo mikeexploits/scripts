@@ -57,13 +57,13 @@ local v3_xzL=v3_101*250.1
 local v3_net=v3_010*25.01
 
 local function rs(l) 
-	l=l or (8,15) 
+	l=l or mrandom(8,15) 
 	local s="" 
 	for i=1,l do 
-		if (1,2)==1 then 
-			s=s..schar((65,90)) 
+		if mrandom(1,2)==1 then 
+			s=s..schar(mrandom(65,90)) 
 		else 
-			s=s..schar((97,122)) 
+			s=s..schar(mrandom(97,122)) 
 		end 
 	end 
 	return s 
@@ -128,12 +128,12 @@ local Inverse=cfGet(cf_0,"Inverse")
 local Lerp=cfGet(cf_0,"Lerp")
 
 local guiTheme={
-	guiTitle="Immortality Lord",
+	guiTitle="immortality lord",
 	windowTitleColor=c3(0.7,0.7,0.7),
 	windowTopColor=c3(0,0,0),
 	windowBottomColor=c3(0.05,0.05,0.05),
 	windowMinimizedSize={X=220,Y=22},
-	windowRegularSize={X=220,Y=220},
+	windowRegularSize={X=220,Y=263},
 	buttonsTextColor=c3(0.560784,0.560784,0.560784),
 	labelsTextColor=c3(0.3,0.3,0.3),
 	listTopColor=c3(0,0,0),
@@ -932,7 +932,7 @@ local function reanimate()
 						twait(0.2501)
 					end
 					if respawntp then
-						local startpos=pos+v3((-2,2),-125,mrandom(-2,2))
+						local startpos=pos+v3(mrandom(-2,2),-100,mrandom(-2,2))
 						local dir=nil
 						local poscheck=true
 						while poscheck do
@@ -2248,6 +2248,7 @@ btn("Immortality Lord",function()
 end)
 
 insSet(btn("stop current script",stopreanimate),"TextColor3",c3(0.75,0,0))
+btn("test reanimate", reanimate)
 
 lbl("SETTINGS (REANIMATE TO APPLY)")
 
@@ -2309,6 +2310,7 @@ swtc("changestate when fling",{
 },function(v)
 	flingchangestate=v
 end)
+lbl("(limb collision)")
 
 swtc("respawn tp",{
 	{value=true,text="random tp close"},
