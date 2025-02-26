@@ -5,7 +5,7 @@ Visit the original resporitory: https://github.com/violin-suzutsuki/LinoriaLib
 ]]
 local InputService = cloneref(game:GetService('UserInputService'))
 local TextService = cloneref(game:GetService('TextService'))
-local CoreGui = cloneref(game:GetService('CoreGui'))
+local CoreGui = gethui() or cloneref(game:GetService('CoreGui'))
 local Teams = cloneref(game:GetService('Teams'))
 local Players = cloneref(game:GetService('Players'))
 local RunService = cloneref(game:GetService('RunService'))
