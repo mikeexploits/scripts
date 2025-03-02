@@ -1,8 +1,10 @@
 --[[
-THIS WASN'T MADE BY ME!!! 
-I made this to preserve the library incase the original author deletes it, so I can keep using it!
-Visit the original resporitory: https://github.com/violin-suzutsuki/LinoriaLib
+    THIS WASN'T MADE BY ME!!! 
+    I made this to preserve the library incase the original author deletes it, so I can keep using it!
+    also, this is modified to be improved.
+    Visit the original resporitory: https://github.com/violin-suzutsuki/LinoriaLib 
 ]]
+local cloneref = cloneref or (function() end)
 local InputService = cloneref(game:GetService('UserInputService'))
 local TextService = cloneref(game:GetService('TextService'))
 local CoreGui = gethui() or cloneref(game:GetService('CoreGui'))
@@ -17,6 +19,7 @@ local Mouse = LocalPlayer:GetMouse()
 local ProtectGui = protectgui or (syn and syn.protect_gui) or (function() end);
 
 local ScreenGui = Instance.new('ScreenGui');
+ScreenGui.Name = "LinoriaGui"
 ProtectGui(ScreenGui);
 
 ScreenGui.ZIndexBehavior = Enum.ZIndexBehavior.Global;
@@ -2702,7 +2705,7 @@ do
 
     local WatermarkOuter = Library:Create('Frame', {
         BorderColor3 = Color3.new(0, 0, 0);
-        Position = UDim2.new(0, 100, 0, -25);
+        Position = UDim2.new(0, 175, 0, -35);
         Size = UDim2.new(0, 213, 0, 20);
         ZIndex = 200;
         Visible = false;
