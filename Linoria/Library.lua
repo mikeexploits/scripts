@@ -2930,6 +2930,7 @@ function Library:Notify(Text, Time)
     pcall(NotifyOuter.TweenSize, NotifyOuter, UDim2.new(0, XSize + 8 + 4, 0, YSize), 'Out', 'Quad', 0.4, true);
     local newsoundyes = Instance.new("Sound", game:FindFirstChildOfClass("SoundService")); 
     newsoundyes.SoundId = "rbxassetid://998971542"
+    newsoundyes.Volume = 0.75
     newsoundyes.PlaybackSpeed = 0.95
     newsoundyes.PlayOnRemove = true --dont gather a bunch of sound instances in soundservice
     newsoundyes:Destroy()
