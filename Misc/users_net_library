@@ -1,4 +1,5 @@
 -- removed beginning comments for my hat fling script
+-- original: https://github.com/typicaalusername/random-stuff/blob/main/4eyesnetlib.lua
 
 local Player=game.Players.LocalPlayer
 local RunService=game:GetService("RunService")
