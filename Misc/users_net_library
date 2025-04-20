@@ -15,7 +15,7 @@ if not getgenv().Network then
 	}
 	
 	Network.RetainPart = function(Part) -- Retain part just configures ONE property. I just dumbed it down.
-		assert(typeof(Part) and (Part:IsA("BasePart") or Part:IsA("MeshPart")),warn("[net library]: Retain error: Unable to proceed due to Arg1 isn't a BasePart/MeshPart. Are you sure you put in the right instance?"))
+		--assert(typeof(Part) and (Part:IsA("BasePart") or Part:IsA("MeshPart")),warn("[net library]: Retain error: Unable to proceed due to Arg1 isn't a BasePart/MeshPart. Are you sure you put in the right instance?"))
 		if not table.find(Network["Instances"],Part) then
 			Part.CustomPhysicalProperties = PhysicalProperties.new(0,0,0,0,0)
 			table.insert(Network["Instances"],Part)
