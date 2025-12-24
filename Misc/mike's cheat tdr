@@ -1,0 +1,101 @@
+local ObsidianRepo = "https://raw.githubusercontent.com/deividcomsono/Obsidian/main/" -- https://docs.mspaint.cc/obsidian
+local Library = loadstring(game:HttpGet(ObsidianRepo .. "Library.lua"))()
+local SaveManager = loadstring(game:HttpGet(ObsidianRepo .. "addons/SaveManager.lua"))()
+local ThemeManager = loadstring(game:HttpGet(ObsidianRepo .. "addons/ThemeManager.lua"))()
+local Options = Library.Options
+local Toggles = Library.Toggles
+
+local workspace = game:GetService("Workspace")
+local plrs = game:GetService("Players")
+local rep = game:GetService("ReplicatedStorage")
+local rs = game:GetService("RunService")
+local uis = game:GetService("UserInputService")
+
+local rbxts = rep.rbxts_include.node_modules["@rbxts"]
+local events = rbxts.remo.src.container
+
+local spamstring = string.rep("\n",2000) .. "[mike's cheat] To Mods: Turn off Watchdog for the best exploit-catching experience!"
+
+local Window = Library:CreateWindow({
+    Title = "mike's cheat",
+    Footer = "version: 0.0 [BETA]",
+    Icon = 139914620997315, -- mike's cheat icon
+    NotifySide = "Right",
+    ShowCustomCursor = false,
+    DisableSearch = true,
+})
+
+local DefaultTheme = {
+    AccentColor = Color3.new(0,.5,1),
+    FontFace = Enum.Font.Code
+}
+
+local Tabs = {
+    Main = Window:AddTab("Main","user"),
+	UISettings = Window:AddTab("UI Settings", "settings"),
+}
+
+local Groups = {
+    LeftMain = Tabs.Main:AddLeftGroupbox("Player"),
+    RightMain = Tabs.Main:AddRightGroupbox("Right Groupbox"),
+}
+
+task.spawn(function()
+    SaveManager:SetLibrary(Library)
+    SaveManager:IgnoreThemeSettings()
+    SaveManager:SetIgnoreIndexes({"MenuKeybind"})
+    SaveManager:SetFolder("mikecheat")
+    SaveManager:BuildConfigSection(Tabs.UISettings)
+    SaveManager:LoadAutoloadConfig()
+
+    ThemeManager:SetLibrary(Library)
+    ThemeManager:SetFolder("mikecheat")
+    ThemeManager:SetDefaultTheme(DefaultTheme)
+    ThemeManager:ApplyToTab(Tabs.UISettings)
+    ThemeManager:LoadDefault()
+end)
+
+Groups.LeftMain:AddDropdown("LevelDropdown", {
+    Values = {
+        "abandoned_office",
+        "christmas_event",
+        "darkness",
+        "electrical_station",
+        "field_of_wheat",
+        "glitched_halls",
+        "lucculus_fight",
+        "shifting_world",
+        "storage_unit",
+        "thalassophobia",
+        "the_interstice",
+        "the_junkyard",
+        "the_prison",
+        "tranquility",
+        "unseen_labyrinth",
+    },
+    Default = "This",
+    Multi = false,
+    Text = "Select Level",
+    Searchable = true,
+    Tooltip = "Select a level to teleport to.\n!! YOU MUST HAVE BEEN TO THE LEVEL TO TELEPORT THERE !!"
+})
+
+Groups.LeftMain:AddButton({
+    Text = "Teleport to Selected Level",
+    Func = function()
+        events:FindFirstChild("player.teleport"):FireServer(Options.LevelDropdown.Value)
+    end
+})
+
+Groups.LeftMain:AddToggle("QuicktimeToggle", {
+	Text = "Always Win Quicktimes",
+	Default = false,
+    Tooltip = "Always win quicktime events.\nQuicktime events happen when an enemy has a red circle on them.\nNOTICE: Does not include Argos quicktimes!"
+})
+  
+task.spawn(function()
+    while task.wait(0.25) do
+        if not Toggles.QuicktimeToggle.Value then return end
+        events["ui.quickTime.mashResult"]:FireServer(1)
+    end
+end)
